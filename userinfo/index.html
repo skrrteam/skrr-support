@@ -81,9 +81,9 @@
             <div style="margin-left: -5px;">
                 <p class="footer_text" onclick="sharing()">앱 다운로드 ↗</p>
                 <p class="footer_text" onclick="window.open('https://support.skrr.app')">문의하기 ↗</p>
-                <p class="footer_text" onclick="window.open('notice')">공지사항 ↗</p>
-                <p class="footer_text" onclick="window.open('privacy-policy')">개인정보처리방침 ↗</p>
-                <p class="footer_text" onclick="window.open('terms-of-service')">서비스 이용약관 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/notice')">공지사항 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/privacy-policy')">개인정보처리방침 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/terms-of-service')">서비스 이용약관 ↗</p>
             </div>
             <br>
             <p style="font-size: 14px; line-height: 18px; font-weight: bold; margin: 4px 0 8px 0; padding: 0; color: #eeeeee;">에이치제이컴퍼니 (HJCM)</p>
@@ -130,6 +130,21 @@
             t.select();
             document.execCommand('copy');
             document.body.removeChild(t);
+        }
+        function sharing(){
+            if(navigator.userAgent.match(/android/i)){
+                window.open("https://play.google.com/store/apps/details?id=com.skrrteam.skrr","sharing1","width='100%',height='100%'");
+            } else if(navigator.userAgent.match(/(iphone)|(ipod)|(ipad)|(macintosh)/i))	{
+                var visitedAt = (new Date()).getTime(); 
+                setTimeout(
+                    function(){
+                        if((new Date()).getTime() - visitedAt < 2000){
+                            location.href = "https://apps.apple.com/kr/app/id1670584329";
+                        }
+                }, 500);
+            } else{
+                alert("모바일에서 확인해 주세요.");
+            }
         }
     </script>
 </body>
