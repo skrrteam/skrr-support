@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skrr 고객 정보 확인</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+        *{
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            /* word-break: keep-all; */
+        }
+        html, body{
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .footer_text{
+            font-size: 14px;
+            line-height: 18px;
+            margin: 4px 5px 4px 5px;
+            padding: 0;
+            display: inline;
+            cursor: pointer;
+        }
+        .footer_text:hover{
+            text-decoration: underline;
+        }
+        #userinfo, #userinfocopy{
+            border: 1px solid #aaaaaa;
+            border-radius: 4px;
+            padding: 15px 20px 15px 20px;
+            color: #000000;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 90vw; max-width: 600px; display: inline-block; text-align: left;">
+        <br><br><br>
+        <img src="https://skrr.app/img/icon-cutout.png" style="width: 20vw; max-width: 100px; height: 22vw; max-height: 110px;">
+        <h1>Skrr 고객 정보 확인</h1>
+        <br>
+        <p>Skrr Team에서 요청한 고객 정보 확인입니다.</p>
+        <p style="margin-top: 30px;">아래 카카오 로그인 버튼을 눌러 나오는 정보를 Skrr Team에 알려주세요.</p>
+        <br><br>
+        <div style="cursor: pointer; text-align: center; margin: 0 !important;" id="logindata_before" onclick="kakaoLogin()">
+            <img src="https://stay.kimain.me/messages.png" style="width: 20px; height: 18px; background-color: #FEE501; float: left; margin-top: 16px; margin-left: 20px;">
+            <p style="background-color: #FEE501; border-radius: 4px; line-height: 50px; margin: 0;">카카오 로그인</p>
+        </div>
+        <div style="height: 50px; margin: 0; display: none;" id="logindata_after">
+            <p id="userinfo" style="position: absolute; width: 90vw; max-width: 600px; text-align: left; margin: 0;">로그인 후 보여짐</p>
+            <p id="userinfocopy" style="position: absolute; width: 90vw; max-width: 600px; text-align: right; color: #007AFF; margin: 0; cursor: pointer;" onclick="copyToClipboard(document.getElementById('userinfo').innerText)">복사</p>
+        </div>
+        <br><br>
+        <h3>개인정보 보호를 위한 중요한 사항</h3>
+        <p style="margin-top: 30px;">로그인 후 보여지는 정보는 고객님의 소중한 개인정보입니다.</p>
+        <p style="margin-top: 30px;">카카오 로그인 정보는 안전하게 암호화되어 전송되며, 이 페이지의 모든 정보는 어떠한 곳에도 저장되지 않습니다.</p>
+        <p style="margin-top: 30px;">소중한 개인정보 보호를 위해 타인에게 노출하지 마시고, 또한 Skrr Team에서 요청하지 않은 경우, Skrr Team에게 먼저 제공하지 마세요.</p>
+        <p style="margin-top: 30px;">Skrr Team은 카카오톡 채널(@skrr)과 Skrr 웹사이트(skrr.app)을 통해 연락드리고 있습니다. Skrr Team으로부터 연락을 받으신 경우, 사칭으로 인한 피해 예방을 위해 공식 채널인지 꼭 확인하세요.</p>
+        <br><br>
+    </div>
+    <footer style="width: 100vw; height: fit-content; background-color: #333333; text-align: center;">
+        <div style="width: 90vw; max-width: 1000px; color: #dddddd; text-align: left; display: inline-block;">
+            <br><br>
+<!--             <p style="font-size: 18px; line-height: 22px; font-weight: bold; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">🤟 Skrr</p><img src="/img/skrr_logo_text_white.png" style="width: 100px; height: 47.2px; margin-top: 15px;"> -->
+<!--             <img src="/img/skrr_logo_text_white.png" style="width: 20px; height: 9.5px; margin: 4px 0 4px 0;"><br> -->
+            <img src="/img/skrr_logo_text_white.png" style="width: 50px; height: 23.6px; margin: 4px 0 4px 0;"><br>
+            <div style="margin-left: -5px;">
+                <p class="footer_text" onclick="sharing()">앱 다운로드 ↗</p>
+                <p class="footer_text" onclick="window.open('https://support.skrr.app')">문의하기 ↗</p>
+                <p class="footer_text" onclick="window.open('notice')">공지사항 ↗</p>
+                <p class="footer_text" onclick="window.open('privacy-policy')">개인정보처리방침 ↗</p>
+                <p class="footer_text" onclick="window.open('terms-of-service')">서비스 이용약관 ↗</p>
+            </div>
+            <br>
+            <p style="font-size: 14px; line-height: 18px; font-weight: bold; margin: 4px 0 8px 0; padding: 0; color: #eeeeee;">에이치제이컴퍼니 (HJCM)</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">대표 : 김현준</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">주소 : 경기도 용인시 기흥구 구성로 90, 208동 602호</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">사업자등록번호 : <a style="text-decoration: underline; cursor: pointer;" onclick="window.open('https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5146900433')">514-69-00433 ↗</a></p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">통신판매업신고번호 : 2021-용인기흥-2190</p>
+            <br>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #cccccc;">© 2023 Skrr Team. 모든 권리 보유.</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #cccccc;">© 2023 Skrr Team. All rights reserved.</p>
+            <br>
+        </div>
+    </footer>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+        Kakao.init('0d762501292abf3f6ea251ce68bfbae4');
+        console.log(Kakao.isInitialized());
+        function kakaoLogin() {
+            Kakao.Auth.login({
+                success: function (response) {
+                    Kakao.API.request({
+                        url: '/v2/user/me',
+                        success: function (response) {
+                            console.log(response)
+                            document.getElementById("userinfo").innerText = response.id;
+                            document.getElementById("logindata_after").style.display = "block";
+                            document.getElementById("logindata_before").style.display = "none";
+                        },
+                        fail: function (error) {
+                            console.log(error)
+                            alert("오류가 발생했습니다.");
+                        },
+                    })
+                },
+                fail: function (error) {
+                    console.log(error)
+                    alert("오류가 발생했습니다.");
+                },
+            })
+        }
+        function copyToClipboard(val){
+            const t = document.createElement("textarea");
+            document.body.appendChild(t);
+            t.value = val;
+            t.select();
+            document.execCommand('copy');
+            document.body.removeChild(t);
+        }
+    </script>
+</body>
+</html>
