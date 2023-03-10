@@ -130,6 +130,10 @@
             t.select();
             document.execCommand('copy');
             document.body.removeChild(t);
+            document.getElementById("userinfocopy").innerText = "복사됨";
+            setTimeout(function() {
+                document.getElementById("userinfocopy").innerText = "복사";
+            }, 2000);
         }
         function sharing(){
             if(navigator.userAgent.match(/android/i)){
