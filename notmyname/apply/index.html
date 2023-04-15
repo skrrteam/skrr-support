@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Skrr 이용 중 문제가 있으신가요? 편하게 Skrr Team에 지원을 요청하세요.">
+    <link rel="icon" type="image/x-icon" href="https://skrr.app/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://skrr.app/favicon.png">
+    <meta property="og:site_name" content="Skrr 이름 변경 가입 신청 | Skrr 지원">
+    <meta property="og:title" content="Skrr 이름 변경 가입 신청 | Skrr 지원">
+    <meta property="og:description" content="Skrr 이용 중 문제가 있으신가요? 편하게 Skrr Team에 지원을 요청하세요.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://skrr.app/ogimg.png">
+    <title>Skrr 이름 변경 가입 신청 | Skrr 지원</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+        *{
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            /* word-break: keep-all; */
+        }
+        html, body{
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .footer_text{
+            font-size: 14px;
+            line-height: 18px;
+            margin: 4px 5px 4px 5px;
+            padding: 0;
+            display: inline;
+            cursor: pointer;
+        }
+        .footer_text:hover{
+            text-decoration: underline;
+        }
+        #userinfo, #userinfocopy{
+            border: 1px solid #aaaaaa;
+            border-radius: 4px;
+            padding: 15px 20px 15px 20px;
+            color: #000000;
+            box-sizing: border-box;
+        }
+        input, textarea, button{
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border-radius: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+        }
+        input[type=text], input[type=email]{
+            border: 1px #bcbdc1 solid;
+            border-radius: 4px;
+            padding: 7px 16px 7px 16px;
+            width: calc(90vw - 34px);
+            max-width: calc(600px - 34px);
+            font-size: 16px;
+            height: 26px;
+        }
+        select{
+            border: 1px #bcbdc1 solid;
+            border-radius: 4px;
+            padding: 7px 16px 7px 16px;
+            width: 90vw;
+            max-width: 600px;
+            font-size: 16px;
+            height: 40px;
+        }
+        input[type=button]{
+            border: none;
+            border-radius: 4px;
+            padding: 7px 16px 7px 16px;
+            width: 90vw;
+            max-width: 600px;
+            font-size: 16px;
+            height: 50px;
+            color: #FFFFFF;
+            background-color: #333333;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 90vw; max-width: 600px; display: inline-block; text-align: left;">
+        <br><br><br>
+        <img src="https://skrr.app/img/icon-cutout.png" style="width: 20vw; max-width: 100px; height: 22vw; max-height: 110px;">
+        <h1>Skrr 이름 변경 가입 신청</h1>
+        <br>
+        <p>Skrr 가입 중 나타나는 이름이 내 이름이 아닌가요?</p>
+        <p style="margin-top: 30px;">아래 양식을 채워 이름 변경 가입을 신청해 주세요.</p>
+        <br>
+        <form method="post" id="formdata">
+            <input type="text" placeholder="UID(카카오로그인으로 변경 예정)" id="kakaoUserID" name="kakaoUserID">
+            <br><br>
+            <input type="text" placeholder="이름(본인)" id="userNames" name="userNames">
+            <br><br>
+            <input type="text" placeholder="학교이름(검색)" id="schoolNameSearch">
+            <br><br>
+            <input type="button" value="학교검색" onclick="findSchool()">
+            <br><br>
+            <select id="school-select"></select>
+            <br><br>
+            <input type="text" placeholder="학교이름" id="schoolName" name="schoolName" readonly style="background-color: #dddddd;">
+            <br><br>
+            <input type="text" placeholder="학교ID" id="schoolNumber" name="schoolNumber" readonly style="background-color: #dddddd;">
+            <br><br>
+            <select id="grade-select">
+                <option value="0">학년을 선택하세요.</option>
+                <option value="7">중학교 1학년</option>
+                <option value="8">중학교 2학년</option>
+                <option value="9">중학교 3학년</option>
+                <option value="10">고등학교 1학년</option>
+                <option value="11">고등학교 2학년</option>
+                <option value="12">고등학교 3학년</option>
+            </select>
+            <br><br>
+            <input type="text" placeholder="학년" id="grade" name="grade" readonly style="background-color: #dddddd;">
+            <br><br>
+            <input type="button" id="submitBut" value="회원 등록하기" onclick="submitData()">
+        </form>
+        <br><br>
+        <h3>개인정보 보호를 위한 중요한 사항</h3>
+        <p style="margin-top: 30px;">소중한 개인정보 보호를 위해 개인정보를 타인에게 노출하지 마시고, 또한 Skrr Team에서 요청하지 않은 경우, Skrr Team에게 먼저 제공하지 마세요.</p>
+        <p style="margin-top: 30px;">Skrr Team은 카카오톡 채널[Skrr(@skrr) 및 Skrr 멤버십(@skrr_membership)]과 Skrr 웹사이트[skrr.app 및 support.skrr.app], Skrr 인스타그램[@skrr.app 및 @skrr.app.a]을 통해 연락드리고 있습니다. Skrr Team으로부터 연락을 받으신 경우, 사칭으로 인한 피해 예방을 위해 공식 채널인지 꼭 확인하세요.</p>
+        <br><br>
+    </div>
+    <footer style="width: 100vw; height: fit-content; background-color: #333333; text-align: center;">
+        <div style="width: 90vw; max-width: 1000px; color: #dddddd; text-align: left; display: inline-block;">
+            <br><br>
+            <img src="https://skrr.app/img/skrr_logo_text_white.png" style="width: 50px; height: 23.6px; margin: 4px 0 4px 0;"><br>
+            <div style="margin-left: -5px;">
+                <p class="footer_text" onclick="sharing()">앱 다운로드 ↗</p>
+                <p class="footer_text" onclick="window.open('https://support.skrr.app')">문의하기 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/notice')">공지사항 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/privacy-policy')">개인정보처리방침 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/terms-of-service')">서비스 이용약관 ↗</p>
+            </div>
+            <br>
+            <p style="font-size: 14px; line-height: 18px; font-weight: bold; margin: 4px 0 8px 0; padding: 0; color: #eeeeee;">에이치제이컴퍼니 (HJCM)</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">대표 : 김현준</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">사업자등록번호 : <a style="text-decoration: underline; cursor: pointer;" onclick="window.open('https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5146900433')">514-69-00433 ↗</a></p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">통신판매업신고번호 : 2021-용인기흥-2190</p>
+            <br>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #cccccc;">© 2023 Skrr Team. 모든 권리 보유.</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #cccccc;">© 2023 Skrr Team. All rights reserved.</p>
+            <br>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('grade-select').addEventListener('change', () => {
+            document.getElementById('grade').value = document.getElementById('grade-select').value
+        });
+        function findSchool(){
+            const select = document.getElementById('school-select'); // select 요소 선택
+            select.innerHTML = "<option>로딩 중</option>";
+            fetch('https://api.skrr.app/findschool', {
+                method: 'POST', // HTTP 요청 메서드
+                headers: {
+                    'Content-Type': 'application/json' // 요청 헤더
+                },
+                body: JSON.stringify({ // 요청 본문
+                    school: document.getElementById("schoolNameSearch").value
+                })
+            })
+            .then(response => response.json()) // JSON으로 변환
+            .then(data => {
+                const schools = data.school;
+                const select = document.getElementById('school-select'); // select 요소 선택
+                const schoolNameInput = document.getElementById('schoolName'); // name input 요소 선택
+                const schoolNumberInput = document.getElementById('schoolNumber'); // number input 요소 선택
+                select.innerHTML = "";
+                select.innerHTML = "<option>로딩 완료, 학교를 선택하세요.</option>";
+                schools.forEach(school => {
+                    const option = document.createElement('option'); // option 요소 생성
+                    option.text = `${school.name}(${school.address})`; // option 텍스트 설정
+                    option.value = school.number; // option 값 설정
+                    select.appendChild(option); // select에 option 추가
+                });
+                select.addEventListener('change', () => {
+                    const selectedOption = select.options[select.selectedIndex];
+                    schoolNameInput.value = selectedOption.text.split('(')[0]; // 이름 추출하여 input에 할당
+                    schoolNumberInput.value = selectedOption.value; // number 할당
+                });
+            }) // 반환된 JSON 데이터 처리
+            .catch(error => {
+                console.error(error);
+                alert("알 수 없는 오류 발생");
+            }); // 에러 처리
+        }
+    </script>
+</body>
+</html>
