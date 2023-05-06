@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="skrr,낙ㄱ,스컬,sns,앙케이트,앙케트,투표,선거,선택,질문,답변,친구,학교,초등학교,중학교,고등학교,인기투표,게임,소셜네트워크,소셜네트워킹">
+    <meta name="description" content="누가 널 좋아하는지 알려줄게, Skrr하게.">
+    <link rel="icon" type="image/x-icon" href="https://skrr.app/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://skrr.app/favicon.png">
+    <meta property="og:title" content="프로필 사진을 변경하고 싶어요. | Skrr 지원">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://skrr.app/ogimg.png">
+    <title>프로필 사진을 변경하고 싶어요. | Skrr 지원</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+        *{
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            /* word-break: keep-all; */
+        }
+        html, body{
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #333333;
+        }
+        .box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        p{
+            margin-bottom: 10px;
+            line-height: 24px;
+        }
+        hr{
+            border: 0.6px #dfe0e4 solid;
+            margin-top: 16px;
+        }
+        h1{
+            margin-bottom: 40px;
+        }
+        .footer_text{
+            font-size: 14px;
+            line-height: 18px;
+            margin: 4px 5px 4px 5px;
+            padding: 0;
+            display: inline;
+            cursor: pointer;
+        }
+        .footer_text:hover{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 90vw; max-width: 600px; display: inline-block; text-align: left;">
+        <br><br><br>
+        <div style="background-color: #e9e8e8; border-radius: 6px; display: inline-block; text-align: left !important; padding: 2px 8px 2px 8px; margin: 0; box-sizing: border-box;">
+            <img src="https://skrr.app/img/logo_apple.png" style="height: 16px; float: left; margin: 0 4px 0 0;">
+            <a style="float: left; font-size: 12px; line-height: 16px; padding: 0; margin: 0; color: #818384; font-weight: 600;">iOS</a>
+        </div>
+        <div style="background-color: #d4ffe6; border-radius: 6px; display: inline-block; text-align: left !important; padding: 2px 8px 2px 8px; margin: 0; box-sizing: border-box;">
+            <img src="https://skrr.app/img/logo_android_head.png" style="height: 16px; float: left; margin: 0 6px 0 0;">
+            <a style="float: left; font-size: 12px; line-height: 16px; padding: 0; margin: 0; color: #3EDB85; font-weight: 600;">Android</a>
+        </div>
+        <h1 style="font-weight: 600; margin-top: 0;">프로필 사진을 변경하고 싶어요.</h1>
+        <p>Skrr에서 표시되는 프로필 사진은 가입/로그인 시 카카오계정에서 자동으로 받아오고 있습니다.</p>
+        <p>따라서 프로필 사진을 변경하고 싶으실 경우, <a style="font-weight: bold;">카카오톡 기본 프로필(멀티프로필 안됨)</a>의 프로필 사진을 변경하신 후,</p>
+        <p>Skrr 로그아웃(Skrr앱 - '마이페이지' 탭 - 설정 - 로그아웃) 후 재로그인 시 자동으로 반영되어 변경되는 점 알려드립니다.</p>
+        <br><br>
+    </div>
+    <footer style="width: 100vw; height: fit-content; background-color: #333333; text-align: center;">
+        <div style="width: 90vw; max-width: 1000px; color: #dddddd; text-align: left; display: inline-block;">
+            <br><br>
+            <img src="https://skrr.app/img/skrr_logo_text_white.png" style="width: 50px; height: 23.6px; margin: 4px 0 4px 0;"><br>
+            <div style="margin-left: -5px;">
+                <p class="footer_text" onclick="sharing()">앱 다운로드 ↗</p>
+                <p class="footer_text" onclick="window.open('https://support.skrr.app')">문의하기 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/notice')">공지사항 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/privacy-policy')">개인정보처리방침 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/terms-of-service')">서비스 이용약관 ↗</p>
+            </div>
+            <br>
+            <p style="font-size: 14px; line-height: 18px; font-weight: bold; margin: 4px 0 8px 0; padding: 0; color: #eeeeee;">에이치제이컴퍼니 (HJCM)</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">대표 : 김현준</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">사업자등록번호 : <a style="text-decoration: underline; cursor: pointer;" onclick="window.open('https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5146900433')">514-69-00433 ↗</a></p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">통신판매업신고번호 : 2021-용인기흥-2190</p>
+            <br>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #cccccc;">© 2023 Skrr Team. 모든 권리 보유.</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #cccccc;">© 2023 Skrr Team. All rights reserved.</p>
+            <br>
+        </div>
+    </footer>
+</body>
+</html>
