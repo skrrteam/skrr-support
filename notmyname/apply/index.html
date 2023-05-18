@@ -167,7 +167,7 @@
                 </div>
             </div>
             <br>
-            <p style="margin-bottom: 8px;">2. 증빙 서류를 첨부해 주세요.</p>
+            <p style="margin-bottom: 8px;">2. 증빙서류를 첨부해 주세요.</p>
             <div style="background-color: #F8F8F8; border: #E9E9E9 solid 1px; border-radius: 4px; padding: 10px; margin-bottom: 4px;">
                 <p style="font-size: 14px; color: #1B8754; margin: 0 0 2px 0; font-weight: bold;">✅ 인정되는 증빙서류</p>
                 <p style="font-size: 14px; color: #1B8754; margin: 2px 0 2px 0;">학생증, 주민등록증, 재학증명서, 주민등록등본 등</p>
@@ -182,7 +182,7 @@
             </div>
             <div style="background-color: #F8F8F8; height: 62px; text-align: center; border: #E9E9E9 solid 1px; border-radius: 4px;">
                 <div style="display: inline-block; width: fit-content; height: 100px; margin-top: 10px;">
-                    <p style="width: 73.16px; font-size: 16px; color: #666666; float: left; line-height: 42px; margin: 0 10px 0 0;">증빙 서류</p>
+                    <p style="width: 73.16px; font-size: 16px; color: #666666; float: left; line-height: 42px; margin: 0 10px 0 0;">증빙서류</p>
                     <input style="width: calc(90vw - 200px); max-width: calc(600px - 200px); float: left;" type="file" name="file" accept="image/png, image/jpeg">
                 </div>
             </div>
@@ -228,6 +228,13 @@
         Kakao.init('0d762501292abf3f6ea251ce68bfbae4');
         console.log(Kakao.isInitialized());
         function kakaoLogin() {
+            if(document.getElementById("name").value == "") {
+                alert("변경하실 이름을 입력해 주세요.");
+                return;
+            } else if(document.getElementById("file").value == ""){
+                alert("증빙 서류를 첨부해 주세요.");
+                return;
+            }
             document.getElementById("lockbox").style.display = "block";
             document.getElementById("lockbox_title").innerText = "카카오 로그인을 진행하고 있어요.";
             Kakao.Auth.login({
