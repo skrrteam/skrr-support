@@ -7,12 +7,12 @@
     <meta name="description" content="Skrr 이용 중 문제가 있으신가요? 편하게 Skrr Team에 지원을 요청하세요.">
     <link rel="icon" type="image/x-icon" href="https://skrr.app/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="https://skrr.app/favicon.png">
-    <meta property="og:site_name" content="Skrr 이름 변경 신청 | Skrr 지원">
-    <meta property="og:title" content="Skrr 이름 변경 신청 | Skrr 지원">
+    <meta property="og:site_name" content="Skrr 이름 변경 신청 성공 | Skrr 지원">
+    <meta property="og:title" content="Skrr 이름 변경 신청 성공 | Skrr 지원">
     <meta property="og:description" content="Skrr 이용 중 문제가 있으신가요? 편하게 Skrr Team에 지원을 요청하세요.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://skrr.app/ogimg.png">
-    <title>Skrr 이름 변경 신청 | Skrr 지원</title>
+    <title>Skrr 이름 변경 신청 성공 | Skrr 지원</title>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
@@ -89,46 +89,10 @@
     <div style="width: 90vw; max-width: 600px; display: inline-block; text-align: left;">
         <br><br><br>
         <img src="https://skrr.app/img/icon-cutout.png" style="width: 20vw; max-width: 100px; height: 22vw; max-height: 110px;">
-        <h1 style="margin-bottom: 40px;">Skrr 이름 변경 신청</h1>
-        <form method="post" id="formdata" action="https://api.skrr.app/userinfo/change/apply">
-            <input type="text" style="display: none;" id="kakaoUserID" name="UID" readonly>
-            <p style="margin-bottom: 8px;">1. 변경할 이름을 입력해 주세요.</p>
-            <div style="background-color: #F8F8F8; height: 62px; text-align: center; border: #E9E9E9 solid 1px; border-radius: 4px;">
-                <div style="display: inline-block; width: fit-content; height: 100px; margin-top: 10px;">
-                    <p style="width: 73.16px; font-size: 16px; color: #666666; float: left; line-height: 42px; margin: 0 10px 0 0;">변경할 이름</p>
-                    <input style="width: calc(90vw - 200px); max-width: calc(600px - 200px); float: left;" type="text" placeholder="ex) 홍길동" id="name" name="name">
-                </div>
-            </div>
-            <br>
-            <p style="margin-bottom: 8px;">2. 증빙 서류를 첨부해 주세요.</p>
-            <div style="background-color: #F8F8F8; border: #E9E9E9 solid 1px; border-radius: 4px; padding: 10px; margin-bottom: 4px;">
-                <p style="font-size: 14px; color: #1B8754; margin: 0 0 2px 0; font-weight: bold;">✅ 인정되는 증빙서류</p>
-                <p style="font-size: 14px; color: #1B8754; margin: 2px 0 2px 0;">학생증, 주민등록증, 재학증명서, 주민등록등본 등</p>
-                <p style="font-size: 12px; color: #777777; margin: 2px 0 2px 0;">공인된 기관(정부, 학교 등)에서 발급한 신분증 또는 신분을 증빌할 수 있는 서류(주민등록등본, 재학증명서 등)</p>
-                <p style="font-size: 14px; color: #ff6464; margin: 8px 0 2px 0; font-weight: bold;">🚫 인정되지 않는 증빙서류</p>
-                <p style="font-size: 14px; color: #ff6464; margin: 2px 0 2px 0;">모바일 학생증, 페이스북 프로필, 증빙 서류의 화면 캡처/촬영본 등</p>
-                <p style="font-size: 12px; color: #777777; margin: 2px 0 2px 0;">공인된 기관에서 발급하지 않았거나, 신분을 증빙하기 어렵다고 판단되거나, 화면을 캡처하거나 촬영한 서류</p>
-            </div>
-            <div style="background-color: #F8F8F8; border: #E9E9E9 solid 1px; border-radius: 4px; padding: 10px; margin-bottom: 4px;">
-                <p style="font-size: 14px; color: #555555; margin: 0;">개인정보 보호를 위해 <a style="text-decoration: underline;"><span style="font-weight: bold; color: #222222;">발급 기관</span>과 <span style="font-weight: bold; color: #222222;">이름</span>을 제외한 <span style="font-weight: bold; color: #222222;">모든 정보를 마스킹(가림)</span></a> 처리한 후 업로드해 주시기 바랍니다.</p>
-                <p style="font-size: 12px; color: #777777; margin: 2px 0 2px 0;">발급 기관과 이름을 제외한 개인정보가 노출된 경우, 개인정보 보호를 위해 이름 변경이 반려될 수 있습니다.</p>
-            </div>
-            <div style="background-color: #F8F8F8; height: 62px; text-align: center; border: #E9E9E9 solid 1px; border-radius: 4px;">
-                <div style="display: inline-block; width: fit-content; height: 100px; margin-top: 10px;">
-                    <p style="width: 73.16px; font-size: 16px; color: #666666; float: left; line-height: 42px; margin: 0 10px 0 0;">증빙 서류</p>
-                    <input style="width: calc(90vw - 200px); max-width: calc(600px - 200px); float: left;" type="file" name="file" accept="image/png, image/jpeg">
-                </div>
-            </div>
-            <br><br>
-            <div style="cursor: pointer; text-align: center; margin: 0 !important;" id="logindata_before" onclick="kakaoLogin()">
-                <img src="https://stay.kimain.me/messages.png" style="width: 20px; height: 18px; background-color: #FEE501; float: left; margin-top: 16px; margin-left: 20px;">
-                <p style="background-color: #FEE501; border-radius: 4px; line-height: 50px; margin: 0;">카카오 로그인 후 신청하기</p>
-            </div>
-            <div style="text-align: center; margin-top: 6px;">
-                <p style="font-size: 14px; color: #555555; margin: 2px 0 2px 0;">ⓘ 이름 변경 결과는 Skrr 앱 알림을 통해 알려드립니다. 앱 알림이 켜져 있는지 확인해 주세요.</p>
-            </div>
-        </form>
-        <br><br>
+        <h1 style="margin-bottom: 100px;">Skrr 이름 변경 신청 완료</h1>
+        <p>이름 변경 신청이 완료되었습니다.</p>
+        <p>이름 변경 결과는 Skrr 앱 알림을 통해 알려드립니다. 앱 알림이 켜져 있는지 확인해 주세요.</p>
+        <br><br><br>
         <h3>개인정보 보호를 위한 중요한 사항</h3>
         <p style="margin-top: 20px; font-size: 14px; color: #555555;">소중한 개인정보 보호를 위해 개인정보를 타인에게 노출하지 마시고, 또한 Skrr Team에서 요청하지 않은 경우, Skrr Team에게 먼저 제공하지 마세요.</p>
         <p style="margin-top: 20px; font-size: 14px; color: #555555;">Skrr Team은 카카오톡 채널[Skrr(@skrr), Skrr 고객센터(@skrr_cs), Skrr 멤버십(@skrr_membership)]과 Skrr 웹사이트[skrr.app], Skrr 인스타그램[@skrr.app 등]을 통해 연락드리고 있습니다. Skrr Team으로부터 연락을 받으신 경우, 사칭으로 인한 피해 예방을 위해 공식 채널인지 꼭 확인하세요.</p>
