@@ -167,7 +167,7 @@
                         url: '/v2/user/me',
                         success: function (response) {
                             console.log(response)
-                            document.getElementById("UID").innerText = response.id;
+                            document.getElementById("UID").value = response.id;
                             document.getElementById("formdata").submit();
                         },
                         fail: function (error) {
