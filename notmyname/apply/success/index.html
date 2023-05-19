@@ -231,9 +231,9 @@
                         document.getElementById("lockbox_img").style.display = "block";
                         document.getElementById("lockbox_body").innerText = "알림을 받지 못했다면 설정 앱에서 Skrr의 알림을 활성화해 주세요."
                     } else if(data == "FAIL"){
-                        document.getElementById("lockbox_title").innerText = "앱 알림이 꺼져있는 것 같아요.";
+                        document.getElementById("lockbox_title").innerText = "앱 알림이 꺼져있는 것 같아요. 알림을 정상적으로 발송하지 못했어요.";
                         document.getElementById("lockbox_loading").style.display = "none";
-                        document.getElementById("lockbox_body").innerHTML = "원활한 알림 수신을 위해 아래 2가지 방법 중 1가지 방법을 따라 알림을 켜주세요.<br><br>선택1) 앱을 삭제 후 다시 설치합니다. 앱을 실행할 때 알림 권한을 물으면, 허용을 탭합니다.<br><br>선택2) 설정 앱에서 Skrr 알림을 켜주신 후, Skrr 앱 > 마이페이지 > 로그아웃 후 재로그인을 진행해 주세요."
+                        document.getElementById("lockbox_body").innerHTML = "<br>원활한 알림 수신을 위해 아래 2가지 방법 중 1가지 방법을 따라 알림을 켜주세요.<br><br>선택1) 앱을 삭제 후 다시 설치합니다. 앱을 실행할 때 알림 권한을 물으면, 허용을 탭합니다.<br><br>선택2) 설정 앱에서 Skrr 알림을 켜주신 후, Skrr 앱 > 마이페이지 > 로그아웃 후 재로그인을 진행해 주세요."
                         document.getElementById("lockbox_body").style.color = "#ff6464";
                     }
                 })
