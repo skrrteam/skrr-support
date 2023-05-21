@@ -44,7 +44,7 @@
             color: #000000;
             box-sizing: border-box;
         }
-        input, textarea, button{
+        input, textarea, button, select{
             appearance: none;
             -moz-appearance: none;
             -webkit-appearance: none;
@@ -63,13 +63,14 @@
             background-color: #FFFFFF;
         }
         select{
-            border: 1px #bcbdc1 solid;
+            border: 1px #E9E9E9 solid;
             border-radius: 4px;
             padding: 7px 16px 7px 16px;
             width: 90vw;
             max-width: 600px;
             font-size: 16px;
             height: 40px;
+            background-color: #FFFFFF;
         }
         input[type=button]{
             border: none;
@@ -153,6 +154,13 @@
             <h3 style="color: #333333; margin-top: 6px;">잠시만 기다려주세요.</h3>
         </div>
     </div>
+    <div style="margin: 0; padding: 0; text-align: center; position: fixed; width: 100vw; height: 100vh; background-color: white; display: none;" id="lockbox_school">
+        <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: calc(100vh - 55px);">
+            <div class="loader loader-7" style="margin-bottom: 40px;"></div>
+            <h3 style="color: #333333; margin: 6px 0 6px 0;" id="lockbox_title">학교를 검색하고 있어요.</h3>
+            <h3 style="color: #333333; margin-top: 6px;">잠시만 기다려주세요.</h3>
+        </div>
+    </div>
     <div style="width: 90vw; max-width: 600px; display: inline-block; text-align: left;">
         <br><br><br>
         <img src="https://skrr.app/img/icon-cutout.png" style="width: 20vw; max-width: 100px; height: 22vw; max-height: 110px;">
@@ -162,9 +170,9 @@
             <a style="float: left; font-size: 16px; line-height: 20px; padding: 0; margin: 0; font-weight: 600;">이름 변경 시 탈퇴 후 재가입으로 진행되기에, 멤버십 구독, 받은 질문, 코인 등을 포함한 모든 데이터가 삭제됩니다.</a>
         </div>
         <br><br>
-        <h3>현재 이름 변경 신청을 할 수 없어요. 고객센터로 문의해 주세요.</h3>
-        <h3 style="color: #0A84FF; text-decoration: underline; cursor: pointer; margin-bottom: 0;" onclick="location.href='https://support.skrr.app'">고객센터 바로가기 →</h3>
-        <form method="post" id="formdata" action="https://api.skrr.app/userinfo/change/apply" enctype="multipart/form-data" style="display: none;">
+        <!-- <h3>현재 이름 변경 신청을 할 수 없어요. 고객센터로 문의해 주세요.</h3>
+        <h3 style="color: #0A84FF; text-decoration: underline; cursor: pointer; margin-bottom: 0;" onclick="location.href='https://support.skrr.app'">고객센터 바로가기 →</h3> -->
+        <form method="post" id="formdata" action="https://api.skrr.app/userinfo/change/apply" enctype="multipart/form-data">
             <input type="text" style="display: none;" id="UID" name="UID" readonly>
             <p style="margin-bottom: 8px;">1. 변경할 이름을 입력해 주세요.</p>
             <div style="background-color: #F8F8F8; height: 62px; text-align: center; border: #E9E9E9 solid 1px; border-radius: 4px;">
@@ -174,7 +182,47 @@
                 </div>
             </div>
             <br>
-            <p style="margin-bottom: 8px;">2. 증빙서류를 첨부해 주세요.</p>
+            <p style="margin-bottom: 8px;">2. 학교 정보를 입력해 주세요.</p>
+            <div style="background-color: #F8F8F8; height: 62px; text-align: center; border: #E9E9E9 solid 1px; border-radius: 4px; margin-bottom: 4px;">
+                <div style="display: inline-block; width: fit-content; height: 100px; margin-top: 10px;">
+                    <p style="width: 73.16px; font-size: 16px; color: #666666; float: left; line-height: 42px; margin: 0 10px 0 0;">학교명 검색</p>
+                    <input style="width: calc(90vw - 230px); max-width: calc(600px - 230px); float: left;" type="text" placeholder="ex) 한국고등학교" id="schoolNameSearch">
+                    <div style="float: left; cursor: pointer;">
+                        <img src="icon-search-mono.png" style="width: 24px; margin: 10px 0 0 6px;" onclick="findSchool()">
+                    </div>
+                </div>
+            </div>
+            <div style="background-color: #F8F8F8; height: 62px; text-align: center; border: #E9E9E9 solid 1px; border-radius: 4px; margin-bottom: 4px;">
+                <div style="display: inline-block; width: fit-content; height: 100px; margin-top: 10px;">
+                    <p style="width: 73.16px; font-size: 16px; color: #666666; float: left; line-height: 42px; margin: 0 10px 0 0;">학교 선택</p>
+                    <select style="width: calc(90vw - 166px); max-width: calc(600px - 166px); float: left;" id="school-select">
+                        <option value="0">학교 이름을 입력 후 검색해 주세요.</option>
+                    </select>
+                </div>
+            </div>
+            <div style="background-color: #F8F8F8; height: 62px; text-align: center; border: #E9E9E9 solid 1px; border-radius: 4px; margin-bottom: 4px; display: none;">
+                <div style="display: inline-block; width: fit-content; height: 100px; margin-top: 10px;">
+                    <p style="width: 73.16px; font-size: 16px; color: #666666; float: left; line-height: 42px; margin: 0 10px 0 0;">학교 정보</p>
+                    <input style="width: calc(((90vw - 230px) / 2) - 4px); max-width: calc(((600px - 230px) / 2) - 4px); float: left; background-color: #dddddd; margin-right: 4px;" type="text" placeholder="학교 선택 시 나타남" id="schoolName" name="schoolName" readonly>
+                    <input style="width: calc(((90vw - 230px) / 2) - 4px); max-width: calc(((600px - 230px) / 2) - 4px); float: left; background-color: #dddddd;" type="text" placeholder="학교 선택 시 나타남" id="schoolNumber" name="schoolNumber" readonly>
+                </div>
+            </div>
+            <div style="background-color: #F8F8F8; height: 62px; text-align: center; border: #E9E9E9 solid 1px; border-radius: 4px; margin-bottom: 4px;">
+                <div style="display: inline-block; width: fit-content; height: 100px; margin-top: 10px;">
+                    <p style="width: 73.16px; font-size: 16px; color: #666666; float: left; line-height: 42px; margin: 0 10px 0 0;">학년 선택</p>
+                    <select id="grade-select" style="width: calc(90vw - 166px); max-width: calc(600px - 166px); float: left;">
+                        <option value="0">학교를 먼저 선택해 주세요.</option>
+                    </select>
+                </div>
+            </div>
+            <div style="background-color: #F8F8F8; height: 62px; text-align: center; border: #E9E9E9 solid 1px; border-radius: 4px; display: none;">
+                <div style="display: inline-block; width: fit-content; height: 100px; margin-top: 10px;">
+                    <p style="width: 73.16px; font-size: 16px; color: #666666; float: left; line-height: 42px; margin: 0 10px 0 0;">학년</p>
+                    <input style="width: calc(90vw - 200px); max-width: calc(600px - 200px); float: left; background-color: #dddddd;" type="text" placeholder="학년 선택 시 나타남" id="grade" name="grade" readonly>
+                </div>
+            </div>
+            <br>
+            <p style="margin-bottom: 8px;">3. 증빙서류를 첨부해 주세요.</p>
             <div style="background-color: #F8F8F8; border: #E9E9E9 solid 1px; border-radius: 4px; padding: 10px; margin-bottom: 4px;">
                 <p style="font-size: 14px; color: #1B8754; margin: 0 0 2px 0; font-weight: bold;">✅ 인정되는 증빙서류</p>
                 <p style="font-size: 14px; color: #1B8754; margin: 2px 0 2px 0;">학생증, 주민등록증, 재학증명서, 주민등록등본 등</p>
@@ -239,6 +287,15 @@
             if(document.getElementById("name").value == "") {
                 alert("변경하실 이름을 입력해 주세요.");
                 return;
+            } else if(document.getElementById("schoolName").value == "") {
+                alert("학교 정보를 입력해 주세요.");
+                return;
+            } else if(document.getElementById("schoolNumber").value == "") {
+                alert("학교 정보를 입력해 주세요.");
+                return;
+            } else if(document.getElementById("grade").value == "" || document.getElementById("grade").value == "0") {
+                alert("학년을 입력해 주세요.");
+                return;
             } else if(document.getElementById("file").value == ""){
                 alert("증빙 서류를 첨부해 주세요.");
                 return;
@@ -266,6 +323,69 @@
                     alert("오류가 발생했습니다.");
                 },
             })
+        }
+        document.getElementById('grade-select').addEventListener('change', () => {
+            document.getElementById('grade').value = document.getElementById('grade-select').value
+        });
+        function findSchool(){
+            document.getElementById("lockbox_school").style.display = "block";
+            document.getElementById("schoolName").value = "";
+            document.getElementById("schoolNumber").value = "";
+            document.getElementById("grade").value = "";
+            document.getElementById("grade-select").innerHTML = '<option value="0">학교를 먼저 선택해 주세요.</option>';
+            const select = document.getElementById('school-select');
+            select.innerHTML = "<option>로딩 중</option>";
+            fetch('https://api.skrr.app/findschool', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    school: document.getElementById("schoolNameSearch").value
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const schools = data.school;
+                const select = document.getElementById('school-select');
+                const schoolNameInput = document.getElementById('schoolName');
+                const schoolNumberInput = document.getElementById('schoolNumber');
+                select.innerHTML = "";
+                schools.forEach(school => {
+                    const option = document.createElement('option');
+                    option.text = `${school.name}(${school.address})`;
+                    option.value = `${school.number}$${school.level}`;
+                    select.appendChild(option);
+                    const selectedOption = select.options[select.selectedIndex];
+                    schoolNameInput.value = selectedOption.text.split('(')[0];
+                    schoolNumberInput.value = selectedOption.value.split('$')[0];
+                    if(selectedOption.value.split('$')[1] == "중학교"){
+                        document.getElementById("grade-select").innerHTML = '<option value="0">학년을 선택하세요.</option><option value="7">중학교 1학년</option><option value="8">중학교 2학년</option><option value="9">중학교 3학년</option>';
+                    } else if(selectedOption.value.split('$')[1] == "고등학교"){
+                        document.getElementById("grade-select").innerHTML = '<option value="0">학년을 선택하세요.</option><option value="10">고등학교 1학년</option><option value="11">고등학교 2학년</option><option value="12">고등학교 3학년</option>';
+                    } else{
+                        document.getElementById("grade-select").innerHTML = '<option value="0">현재 가입할 수 없는 학교예요. 고객센터로 문의해 주세요.</option>';
+                    }
+                });
+                document.getElementById("lockbox_school").style.display = "none";
+                select.addEventListener('change', () => {
+                    const selectedOption = select.options[select.selectedIndex];
+                    schoolNameInput.value = selectedOption.text.split('(')[0];
+                    schoolNumberInput.value = selectedOption.value.split('$')[0];
+                    if(selectedOption.value.split('$')[1] == "중학교"){
+                        document.getElementById("grade-select").innerHTML = '<option value="0">학년을 선택하세요.</option><option value="7">중학교 1학년</option><option value="8">중학교 2학년</option><option value="9">중학교 3학년</option>';
+                    } else if(selectedOption.value.split('$')[1] == "고등학교"){
+                        document.getElementById("grade-select").innerHTML = '<option value="0">학년을 선택하세요.</option><option value="10">고등학교 1학년</option><option value="11">고등학교 2학년</option><option value="12">고등학교 3학년</option>';
+                    } else{
+                        document.getElementById("grade-select").innerHTML = '<option value="0">현재 가입할 수 없는 학교예요. 고객센터로 문의해 주세요.</option>';
+                    }
+                });
+            })
+            .catch(error => {
+                console.error(error);
+                alert("학교를 찾을 수 없어요.\n\n오타가 있는지 확인 후, 그래도 학교가 없다면 고객센터로 문의해 주세요.");
+                document.getElementById("lockbox_school").style.display = "none";
+            }); // 에러 처리
         }
     </script>
 </body>
